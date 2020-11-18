@@ -1,0 +1,156 @@
+
+tbody tr td{
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    font-size: 14px;
+    text-align: center;;
+}
+.ticketit-table .child {
+    text-align:right
+}
+.child .dtr-data{
+    display:block
+}
+#DataTables_Table_0_filter label{
+    margin-right: 9px;
+    display: flex;
+    align-items:center;
+    flex-direction: row-reverse;
+}
+#DataTables_Table_0_filter label input {
+    margin-right:8px;
+    direction: rtl;
+
+}
+.dataTables_length label{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-left: 15px;
+    align-items: center;
+}
+.dataTables_length label select {
+    margin-right:10px
+}
+ .paging_simple_numbers .pagination{
+    margin-right:8px !important;
+     font-size:12px
+}
+.dataTables_info{
+    margin-left : 10px;
+    font-size:12px
+}
+
+table td{
+    text-align:center
+}
+.optional_field_registeration{
+    color: #607D8B;
+    font-size: 12px;
+}
+
+/*register form style*/
+.content_box {
+    background: white;
+    width: 99%;
+    margin: 14px auto 70px auto;
+    text-align: right;
+    display: flex;
+    box-shadow: 0 0px 2px rgba(0,0,0,0.17);
+}
+.alert{
+    text-align: right;
+}
+.rtl{
+    direction: rtl;
+}
+main{
+    background: linear-gradient(to right, #ee9ca7, #ffdde1);
+    height: 100%;
+}
+#app{
+    height: 100%;
+}
+.dropdown-menu.show{
+    left: -60px !important;
+    text-align: right;
+}
+.gradient-bg{
+    display: flex;
+    background: linear-gradient(to right, #ee9ca7, #ffdde1);
+    flex-direction: column;
+}
+.table thead th{
+    text-align: center;
+}
+
+/*profile section style*/
+.profile-sections{
+    padding: 20px 30px;
+    flex-direction: column;
+    display: flex;
+    direction: rtl;
+    border: 1px solid #f1f1f1;
+}
+.span-profile {
+    display: block;
+    font-size: 13px;
+    line-height: 1.692;
+    letter-spacing: -.3px;
+    margin-bottom: 4px;
+    color: #bababa;
+}
+.profile-sections p {
+    font-size: 19px;
+    line-height: 1.158;
+    letter-spacing: -.5px;
+    color: #939393;
+}
+.profileEditForm{
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.login-bg{
+    background-image: url(../img/sgin-in.png);
+    background-size: contain;
+    object-fit: scale-down;
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 560px;
+    filter: hue-rotate(45deg);
+    opacity: .9;
+}
+.login-bg ul li {
+    background-color: transparent;
+    opacity: 1 !important;
+}
+.login-box {
+    box-shadow: rgb(0 0 0 / 41%) -4px 9px 25px -6px;
+    background: #f0f8ffb5;
+    padding: 22px;
+    border-radius: 10px;
+    margin-left: 1rem;
+}
+.welcome-login{
+    font-size: 19px;
+    font-weight: 600;
+}
+.landing-sections{
+    background: white;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0  7px 29px 0 ;
+    transition: all .3s;
+}
+.landing-sections:hover{
+    box-shadow: rgba(100, 100, 111, 0.2) 0 17px 29px 0;
+    transform: translateY(-5px);
+ }
+.landing a{
+    text-decoration: unset;
+    color: #1b1e21;
+}
+.landing-sections h3{
+    font-size: 1.39rem;
+}
+.landing-sections img{
+    border-radius: 0 0 40px 40px;
+}

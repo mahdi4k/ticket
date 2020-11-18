@@ -1,0 +1,16 @@
+<svg width="548.772" height="788.94" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient gradientUnits="objectBoundingBox" y2="1" x2="0.5" x1="0.5" id="linear-gradient">
+   <stop stop-color="#69d5b4" offset="0"/>
+   <stop stop-color="#17c37b" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="790.94" width="550.772" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path stroke="null" fill="url(#linear-gradient)" d="m500.62801,87.40645c4.574,32.37587 0.913,-86.83329 -140.318,-85.88719s-360.032,-1.51927 -360.032,-1.51927s-0.627,8.22707 0,52.12755s0,736.81247 0,736.81247s-3.11,-0.09233 61.568,-0.09233s329.334,0.09233 329.334,0.09233s73.263,-6.41642 99.653,-96.0724s61.35,-207.29911 57.67,-282.80084s-47.875,-322.66033 -47.875,-322.66033z" id="Path_1"/>
+ </g>
+</svg>
