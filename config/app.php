@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Kordy\Ticketit\TicketitServiceProvider::class,
+        DevDojo\Chatter\ChatterServiceProvider::class,
 
         /*
          * Package Service Providers...

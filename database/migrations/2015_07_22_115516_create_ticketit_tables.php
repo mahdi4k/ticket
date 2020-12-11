@@ -39,6 +39,9 @@ class CreateTicketitTables extends Migration
             $table->increments('id');
             $table->string('subject');
             $table->longText('content');
+            $table->longText('FollowUp_area');
+            $table->string('type_request');
+            $table->string('phone_number');
             $table->integer('status_id')->unsigned();
             $table->integer('priority_id')->unsigned();
             $table->integer('user_id')->unsigned();

@@ -18,9 +18,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('ertebat')->group(function () {
     Route::get('/', function () {
-        return redirect('ertebat/login');
+         return redirect('ertebat/login');
+     });
 
-    });
+
+    Route::get('/survey', 'HomeController@survey')->name('survey');
+    Route::get('/survey/create', 'survey\QuestionnaireController@create')->name('survey.create');
+    Route::post('/survey/questionnaires', 'survey\QuestionnaireController@store');
+    Route::get('/survey/{questionnaire}', 'survey\QuestionnaireController@show');
+
+    Route::get('/survey/{questionnaire}/questions/create','survey\QuestionController@create');
+    Route::post('/survey/{questionnaire}/questions','survey\QuestionController@store');
+    Route::get('/surveys/{questionnaire}-{slug}','survey\SurveyController@show');
+    Route::post('/surveys/{questionnaire}-{slug}','survey\SurveyController@store');
+    Route::post('/surveys/{questionnaire}-{slug}','survey\SurveyController@store');
+    Route::delete('/questionnaires/{questionnaire}/questions/{question}','survey\QuestionController@destroy');
+    Route::delete('/questionnaires/{questionnaire}/questions/','HomeController@destroy');
 
     Route::get('/landing', 'HomeController@landing')->name('landing');
 

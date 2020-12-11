@@ -20,6 +20,8 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font.css') }}" rel="stylesheet">
     @yield('style')
+    @yield('css')
+
 </head>
 <body>
     <div id="app">
@@ -92,5 +94,7 @@
     <script src="{{url('/js/bootstrap4.js')}}"></script>
 
     @yield('footer')
+    @yield('js')
+
 </body>
 </html>

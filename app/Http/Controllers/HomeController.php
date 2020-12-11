@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Questionnaire;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,5 +30,17 @@ class HomeController extends Controller
     public function landing()
     {
         return view('landing');
+    }
+
+    public function survey()
+    {
+        $questionnaires = auth()->user()->questionnaires;
+        return view('questionnaire.index',compact('questionnaires'));
+    }
+    public function destroy(Questionnaire $questionnaire)
+    {
+        $questionnaire->load('questions.answer.responses');
+        $questionnaire->delete();
+        return redirect()->back()->with('deleteQuestionnaire','نظرسنجی با موفقیت حذف شد');
     }
 }
