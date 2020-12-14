@@ -38,14 +38,15 @@
                         <ul class="list-group">
 
                             @foreach($questionnaires as $questionnaire)
-                                <li class="list-group-item">
+
+                                <li class="list-group-item border mb-4">
                                     <h3 class="font-weight-bolder">{{$questionnaire->title}}</h3>
 
                                     <div class="mt-3 d-flex flex-column">
-                                        @if(auth()->user()->email === )
+
                                              <a href="{{$questionnaire->publicPath()}}">
                                                 شرکت در این نظرسنجی
-                                            </a>
+                                             </a>
 
                                         <a class="mt-2" href="{{$questionnaire->path()}}">مشاهده نتایج</a>
                                         <form class="mt-3" action="/ertebat/questionnaires/{{$questionnaire->id}}/questions "

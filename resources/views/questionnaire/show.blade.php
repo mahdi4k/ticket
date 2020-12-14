@@ -14,12 +14,10 @@
                         @if($UserSurvey === true)
                             <p style="direction: rtl" class="alert alert-info mb-0 ml-3 ">شما قبلا در این نظر سنجی شرکت کرده این.</p>
                         @else
-                            <a class="btn btn-outline-secondary"
-                               href="/ertebat/surveys/{{$questionnaire->id}}-{{Str::slug($questionnaire->title)}}">شرکت
-                                در
-                                نظرسنجی </a>
+
                         @endif
                     </div>
+
                 </div>
                 @foreach ($questionnaire->questions as $item)
                     <div class="card mt-4 text-right">

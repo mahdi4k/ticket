@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/tickets' ;
+    protected $redirectTo = '/ertebat/landing' ;
 
     /**
      * Create a new controller instance.
@@ -55,10 +55,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'city'=>['string'],
-            'job'=>['string'],
-            'phone_number'=>['digits_between:4,15'],
-            'degreeEducation'=>['string']
+            'city'=>['string','nullable'],
+            'job'=>['string','nullable'],
+            'phone_number'=>['digits_between:4,15','nullable'],
+            'degreeEducation'=>['string','nullable']
         ]);
     }
 

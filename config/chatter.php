@@ -32,9 +32,9 @@ return [
     */
 
     'titles' => [
-        'discussion'  => 'Discussion',
-        'discussions' => 'Discussions',
-        'category'    => 'Category',
+        'discussion'  => 'گفت و گو',
+        'discussions' => 'گفت و گو ها',
+        'category'    => 'دسته بندی',
     ],
 
    /*
@@ -54,9 +54,9 @@ return [
     |
     */
 
-    'headline'      => 'Welcome to Chatter',
-    'description'   => 'A simple forum package for your Laravel app.',
-    'headline_logo' => '/vendor/devdojo/chatter/assets/images/logo-light.png',
+    'headline'      => 'به انجمن خوش آمدید',
+    'description'   => '',
+    'headline_logo' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -150,10 +150,10 @@ return [
     */
 
     'alert_messages' => [
-        'success' => 'Well done!',
-        'info'    => 'Heads Up!',
-        'warning' => 'Wuh Oh!',
-        'danger'  => 'Oh Snap!',
+        'success' => 'عالی!',
+        'info'    => 'دقت کنید',
+        'warning' => 'مشکلی پیش آمده است',
+        'danger'  => 'مشکلی پیش آمده است',
     ],
 
     /*
@@ -175,7 +175,7 @@ return [
 
     'security' => [
         'limit_time_between_posts' => false, //
-        'time_between_posts'       => 1, // In minutes
+        'time_between_posts'       => false, // In minutes
     ],
 
     /*

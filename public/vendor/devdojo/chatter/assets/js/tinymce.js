@@ -3,6 +3,7 @@ var chatter_tinymce_plugins = $('#chatter_tinymce_plugins').val();
 
 // Initiate the tinymce editor on any textarea with a class of richText
 tinymce.init({
+    directionality : "rtl",
 	selector:'textarea.richText',
 	skin: 'chatter',
 	plugins: chatter_tinymce_plugins,
@@ -36,6 +37,7 @@ tinymce.init({
 
 function initializeNewEditor(id){
     tinymce.init({
+        directionality : "rtl",
         selector:'#'+id,
         skin: 'chatter',
         plugins: chatter_tinymce_plugins,

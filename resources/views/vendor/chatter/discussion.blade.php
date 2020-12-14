@@ -5,7 +5,49 @@
     <link href="/vendor/devdojo/chatter/assets/css/simplemde.min.css" rel="stylesheet">
 @stop
 
-
+@section('style')
+ <style>
+     #chatter #chatter_header a.back_btn i{
+         position: relative;
+         left: -1px;
+         top: 8px;
+     }
+     .py-4{
+         padding: 0 !important;
+     }
+     #chatter ul.discussions li a.discussion_list .chatter_post_actions, #chatter ul.discussions li .chatter_posts .chatter_post_actions{
+         position: absolute !important;
+       right: unset !important;
+         left: 0 !important;
+      }
+     #chatter .conversation ul.discussions li .chatter_posts .chatter_middle{
+          padding-right: 80px !important;
+          width: 100%;
+         text-align: right !important;
+     }
+     #chatter .chatter_avatar {
+         margin: 5px 15px 5px 5px !important;
+         position: absolute !important;
+         right: 10px !important;
+         left: unset !important;
+     }
+     #chatter ul.discussions li a.discussion_list .chatter_post_actions, #chatter ul.discussions li .chatter_posts .chatter_post_actions {
+         position: absolute;
+         right: 0px;
+         top: 15px;
+     }
+     #chatter.discussion #new_response{
+         padding-right: 100px !important;
+         padding-left: 0 !important;
+     }
+     #new_discussion{
+         text-align: right !important;
+     }
+     #new_response .chatter_avatar{
+         right: 22px !important;
+     }
+ </style>
+@endsection
 @section('content')
 
     <div id="chatter" class="discussion">
@@ -13,7 +55,7 @@
         <div id="chatter_header" style="background-color:{{ $discussion->color }}">
             <div class="container">
                 <a class="back_btn" href="/{{ Config::get('chatter.routes.home') }}"><i class="chatter-back"></i></a>
-                <h1>{{ $discussion->title }}</h1><span class="chatter_head_details">Posted In {{ Config::get('chatter.titles.category') }}<a
+                <h1>{{ $discussion->title }}</h1><span class="chatter_head_details">  {{ Config::get('chatter.titles.category') }}<a
                         class="chatter_cat"
                         href="/{{ Config::get('chatter.routes.home') }}/{{ Config::get('chatter.routes.category') }}/{{ $discussion->category->slug }}"
                         style="background-color:{{ $discussion->category->color }}">{{ $discussion->category->name }}</a></span>
@@ -60,22 +102,23 @@
 		                		<span class="chatter_posts">
 		                			@if(!Auth::guest() && (Auth::user()->id == $post->user->id))
                                         <div id="delete_warning_{{ $post->id }}" class="chatter_warning_delete">
-		                					<i class="chatter-warning"></i>Are you sure you want to delete this response?
-		                					<button class="btn btn-sm btn-danger pull-right delete_response">Yes Delete It</button>
-		                					<button class="btn btn-sm btn-default pull-right">No Thanks</button>
+		                					<i class="chatter-warning"></i>شما مطمئن هستید میخواهید این نظر را پاک کنید؟
+		                					<button class="btn btn-sm btn-danger pull-right delete_response">بله</button>
+		                					<button class="btn btn-sm btn-default pull-right">لغو</button>
 		                				</div>
                                         @if(Auth::check() && Auth::user()->ticketit_admin)
                                             <div class="chatter_post_actions">
                                                 <p class="chatter_delete_btn">
-                                                    <i class="chatter-delete"></i> Delete
+                                                    <i class="chatter-delete"></i> حذف
                                                 </p>
                                                 <p class="chatter_edit_btn">
-                                                    <i class="chatter-edit"></i> Edit
+                                                    <i class="chatter-edit"></i> ویرایش
                                                 </p>
 			                			    </div>
                                         @endif
                                     @endif
-			                		<div class="chatter_avatar">
+			                		<div>
+                                        <div class="chatter_avatar">
 					        			@if(Config::get('chatter.user.avatar_image_database_field'))
 
                                             <?php $db_field = Config::get('chatter.user.avatar_image_database_field'); ?>
@@ -112,6 +155,7 @@
 
 					        			</div>
 					        		</div>
+                                    </div>
 
 					        		<div class="chatter_clear"></div>
 				        		</span>
@@ -162,8 +206,7 @@
                                     <!-- BODY -->
                                     <div id="editor">
                                         @if( $chatter_editor == 'tinymce' || empty($chatter_editor) )
-                                            <label id="tinymce_placeholder">Add the content for your Discussion
-                                                here</label>
+                                            <label id="tinymce_placeholder">متن گفت و گو را وارد کنید</label>
                                             <textarea id="body" class="richText" name="body"
                                                       placeholder="">{{ old('body') }}</textarea>
                                         @elseif($chatter_editor == 'simplemde')
@@ -179,14 +222,14 @@
                             </div><!-- #new_discussion -->
                             <div id="discussion_response_email">
                                 <button id="submit_response" class="btn btn-success pull-right"><i
-                                        class="chatter-new"></i> Submit Response
+                                        class="chatter-new"></i> ارسال
                                 </button>
                                 @if(Config::get('chatter.email.enabled'))
                                     <div id="notify_email">
                                         <img src="/vendor/devdojo/chatter/assets/images/email.gif"
                                              class="chatter_email_loader">
                                         <!-- Rounded toggle switch -->
-                                        <span>Notify me when someone replies</span>
+                                        <span>به من اطلاع بده</span>
                                         <label class="switch">
                                             <input type="checkbox" id="email_notification"
                                                    name="email_notification" @if(!Auth::guest() && $discussion->users->contains(Auth::user()->id)){{ 'checked' }}@endif>
@@ -202,9 +245,8 @@
                     @else
 
                         <div id="login_or_register">
-                            <p>Please <a href="/{{ Config::get('chatter.routes.home') }}/login">login</a> or <a
-                                    href="/{{ Config::get('chatter.routes.home') }}/register">register</a> to leave a
-                                response.</p>
+                            <p>لطفا <a href="/{{ Config::get('chatter.routes.home') }}/login">ورود</a> or <a
+                                    href="/{{ Config::get('chatter.routes.home') }}/register">ثبت نام</a> </p>
                         </div>
 
                     @endif

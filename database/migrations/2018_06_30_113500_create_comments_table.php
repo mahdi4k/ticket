@@ -36,6 +36,7 @@ class CreateCommentsTable extends Migration
 
 			$table->softDeletes();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

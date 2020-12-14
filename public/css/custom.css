@@ -5,6 +5,9 @@ tbody tr td{
     font-size: 14px;
     text-align: center;;
 }
+.mce-container {
+    text-align:right !important;
+}
 .ticketit-table .child {
     text-align:right
 }

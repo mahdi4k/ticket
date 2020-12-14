@@ -10,7 +10,7 @@
                 {{ $errors->first('commentable_id') }}
             </div>
         @endif
-        <form method="POST" action="{{ route('comments.store') }}">
+        <form  method="POST" id="upload-file" class="text-right" enctype="multipart/form-data" action="{{ route('comments.store') }}">
             @csrf
             @honeypot
             <input type="hidden" name="commentable_type" value="\{{ get_class($model) }}" />
@@ -36,17 +36,28 @@
                         </div>
                     @enderror
                 </div>
+
             @endif
 
             <div class="form-group">
-                <label for="message">Enter your message here:</label>
+                <label for="message">متن خود را وارد کنید</label>
                 <textarea class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
                 <div class="invalid-feedback">
-                    Your message is required.
+                   فیلد متن الزامی است
                 </div>
-                <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>
+             </div>
+
+
+
+                <div class="file-loading">
+                     <input id="input-id" type="file" name="file" class="file" data-preview-file-type="text">
+                 </div>
+            @error('file')
+            <div class="invalid-feedback">
+                {{ $message }}
             </div>
-            <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Submit</button>
+            @enderror
+            <button style="font-size: 13pt" type="submit" class="btn mt-3 btn-sm btn-outline-success px-3 text-uppercase">ارسال</button>
         </form>
     </div>
 </div>

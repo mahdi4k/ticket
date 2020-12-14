@@ -1,5 +1,55 @@
 @extends(Config::get('chatter.master_file_extend'))
+@section('style')
+<style>
+    .py-4{
+        padding: 0 !important;
+    }
+    #chatter ul.discussions li a.discussion_list, #chatter ul.discussions li .chatter_posts{
+        display: flex !important;
+         justify-content: end;
+        flex-direction: row-reverse;
+    }
+    .chatter_avatar{
+        float: unset !important;
+        position: unset !important;
+        left: unset !important;
+    }
+    #chatter ul.discussions li a.discussion_list .chatter_middle, #chatter ul.discussions li .chatter_posts .chatter_middle{
+        float: unset !important;
+        margin-left: unset !important;
+        margin-right: 1pt !important;
+        text-align: right;
+        width: 79%;
+        margin-top: 5px;
+    }
+    #chatter ul.discussions li a.discussion_list .chatter_right, #chatter ul.discussions li .chatter_posts .chatter_right{
+        float: unset !important;
+         right: unset !important;
+         text-align: unset !important;
+         position: unset !important;
+    }
+    #chatter .discussions{
+         padding-top: 15pt !important;
+    }
+    .left-column{
+        padding-top: 15pt;
+        text-align: right;
+        border-right: 1px solid #ececec;
+    }
+    .chatter_middle_title{
+        margin-top: 5px;
+    }
+    #chatter .chatter_sidebar ul{
+        display: flex;
+        justify-content: center;
+    }
+    #chatter #chatter_hero h1{
+        margin-bottom: 0 !important;
+    }
 
+
+</style>
+@endsection
 @section(Config::get('chatter.yields.head'))
     <link href="/vendor/devdojo/chatter/assets/vendor/spectrum/spectrum.css" rel="stylesheet">
     <link href="/vendor/devdojo/chatter/assets/css/chatter.css" rel="stylesheet">
@@ -47,15 +97,15 @@
             </div>
         @endif
 
-        <div class="container chatter_container">
+        <div class="container bg-white chatter_container">
 
             <div class="row">
 
                 <div class="col-md-3 left-column">
                     <!-- SIDEBAR -->
                     <div class="chatter_sidebar">
-                        <button class="btn btn-primary" id="new_discussion_btn"><i class="chatter-new"></i> New {{ Config::get('chatter.titles.discussion') }}</button>
-                        <a href="/{{ Config::get('chatter.routes.home') }}"><i class="chatter-bubble"></i> All {{ Config::get('chatter.titles.discussions') }}</a>
+                        <button class="btn btn-primary" id="new_discussion_btn"><i class="chatter-new"></i> افزودن {{ Config::get('chatter.titles.discussion') }}</button>
+                        <a href="/{{ Config::get('chatter.routes.home') }}"><i class="chatter-bubble"></i> همه {{ Config::get('chatter.titles.discussions') }}</a>
                         <ul class="nav nav-pills nav-stacked">
                             <?php $categories = DevDojo\Chatter\Models\Models::category()->all(); ?>
                             @foreach($categories as $category)
@@ -109,8 +159,7 @@
                                             <div class="chatter_count"><i class="chatter-bubble"></i> {{ $discussion->postsCount[0]->total ?? '' }}</div>
                                         </div>
 
-                                        <div class="chatter_clear"></div>
-                                    </a>
+                                     </a>
                                 </li>
                             @endforeach
                         </ul>
@@ -132,16 +181,13 @@
             </div>
 
             <form id="chatter_form_editor" action="/{{ Config::get('chatter.routes.home') }}/{{ Config::get('chatter.routes.discussion') }}" method="POST">
-                <div class="row">
-                    <div class="col-md-7">
-                        <!-- TITLE -->
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Title of {{ Config::get('chatter.titles.discussion') }}" v-model="title" value="{{ old('title') }}" >
-                    </div>
+                <div class="row text-right">
+
 
                     <div class="col-md-4">
                         <!-- CATEGORY -->
                         <select id="chatter_category_id" class="form-control" name="chatter_category_id">
-                            <option value="">Select a Category</option>
+                            <option value="">انتخاب دسته بندی</option>
                             @foreach($categories as $category)
                                 @if(old('chatter_category_id') == $category->id)
                                     <option value="{{ $category->id }}" selected>{{ $category->name ?? ''}}</option>
@@ -151,7 +197,10 @@
                             @endforeach
                         </select>
                     </div>
-
+                    <div class="col-md-7">
+                        <!-- TITLE -->
+                        <input type="text" class="form-control text-right" id="title" name="title" placeholder="عنوان {{ Config::get('chatter.titles.discussion') }}" v-model="title" value="{{ old('title') }}" >
+                    </div>
                     <div class="col-md-1">
                         <i class="chatter-close"></i>
                     </div>
@@ -160,20 +209,23 @@
                 <!-- BODY -->
                 <div id="editor">
                     @if( $chatter_editor == 'tinymce' || empty($chatter_editor) )
-                        <label id="tinymce_placeholder">Add the content for your Discussion here</label>
-                        <textarea id="body" class="richText" name="body" placeholder="">{{ old('body') }}</textarea>
+                        <label class="text-right" id="tinymce_placeholder">متن گفت و گو را وارد کنید</label>
+                        <textarea style="direction: rtl !important;"   id="body" class="richText text-right" name="body" placeholder="">{{ old('body') }}</textarea>
                     @elseif($chatter_editor == 'simplemde')
-                        <textarea id="simplemde" name="body" placeholder="">{{ old('body') }}</textarea>
+                        <textarea class="text-right" id="simplemde" name="body" placeholder="">{{ old('body') }}</textarea>
                     @endif
                 </div>
 
                 <input type="hidden" name="_token" id="csrf_token_field" value="{{ csrf_token() }}">
 
-                <div id="new_discussion_footer">
-                    <input type='text' id="color" name="color" /><span class="select_color_text">Select a Color for this Discussion (optional)</span>
-                    <button id="submit_discussion" class="btn btn-success pull-right"><i class="chatter-new"></i> Create {{ Config::get('chatter.titles.discussion') }}</button>
-                    <a href="/{{ Config::get('chatter.routes.home') }}" class="btn btn-default pull-right" id="cancel_discussion">Cancel</a>
-                    <div style="clear:both"></div>
+                <div class="d-flex justify-content-end" id="new_discussion_footer">
+
+                   <div>
+                       <a href="/{{ Config::get('chatter.routes.home') }}" class="btn btn-danger pull-right" id="cancel_discussion">انصراف</a>
+                       <button id="submit_discussion" class="btn btn-success pull-right"><i class="chatter-new"></i> افزودن {{ Config::get('chatter.titles.discussion') }}</button>
+
+                   </div>
+
                 </div>
             </form>
 

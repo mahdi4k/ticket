@@ -65,7 +65,7 @@
 
                             <div class="col-md-10 ">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                       name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                       name="name" value="{{ old('name') }}"   autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
 
                             <div class="col-md-10">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                       name="email" value="{{ old('email') }}" required autocomplete="email">
+                                       name="email" value="{{ old('email') }}"   autocomplete="email">
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -114,7 +114,7 @@
                             <div class="col-md-10">
                                 <input id="degreeEducation" type="text"
                                        class="form-control @error('degreeEducation') is-invalid @enderror"
-                                       name="degreeEducation" value="{{ old('degreeEducation') }}" required
+                                       name="degreeEducation" value="{{ old('degreeEducation') }}"
                                        autocomplete="degreeEducation" autofocus>
 
                                 @error('degreeEducation')
@@ -132,7 +132,7 @@
                             <div class="col-md-10">
                                 <input id="city" type="text"
                                        class="form-control @error('degreeEducation') is-invalid @enderror" name="city"
-                                       value="{{ old('city') }}" required autocomplete="city" autofocus>
+                                       value="{{ old('city') }}"   autocomplete="city" autofocus>
 
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">
@@ -149,7 +149,7 @@
                             <div class="col-md-10">
                                 <input id="phone_number" type="text"
                                        class="form-control @error('phone_number') is-invalid @enderror"
-                                       name="phone_number" value="{{ old('phone_number') }}" required
+                                       name="phone_number" value="{{ old('phone_number') }}"
                                        autocomplete="phone_number" autofocus>
 
                                 @error('phone_number')
@@ -167,7 +167,7 @@
                             <div class="col-md-10">
                                 <input id="password" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                       required autocomplete="new-password">
+                                         autocomplete="new-password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -183,7 +183,7 @@
 
                             <div class="col-md-10">
                                 <input id="password-confirm" type="password" class="form-control"
-                                       name="password_confirmation" required autocomplete="new-password">
+                                       name="password_confirmation"   autocomplete="new-password">
                             </div>
                         </div>
 

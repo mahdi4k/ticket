@@ -35,6 +35,15 @@ Route::prefix('ertebat')->group(function () {
     Route::delete('/questionnaires/{questionnaire}/questions/{question}','survey\QuestionController@destroy');
     Route::delete('/questionnaires/{questionnaire}/questions/','HomeController@destroy');
 
+//  =---  gWork Urls -----=
+    Route::get('gworks/create','GWorkController@create');
+    Route::post('gworks/store','GWorkController@store')->name('gwork.store');
+    Route::get('gworks/edit/{gWork}','GWorkController@edit')->name('gwork.edit');
+    Route::post('gworks/update/{gWork}','GWorkController@update')->name('gwork.update');
+    Route::get('gworks','GWorkController@index');
+    Route::get('/gworks/{gworks}','GWorkController@show')->name('gwork.show');
+
+
     Route::get('/landing', 'HomeController@landing')->name('landing');
 
     Auth::routes();

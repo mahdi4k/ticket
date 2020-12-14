@@ -4,31 +4,31 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Create New Questionnire</div>
+                <div class="card text-right">
+                    <div class="card-header">افزودن نظرسنجی</div>
 
                     <div class="card-body">
                         <form action="{{url('ertebat/survey/questionnaires')}}" method="post">
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title">
-                                <small id="emailHelp" class="form-text text-muted">ُسوال خود را در این قسمت بپرسید</small>
+                                <label for="title">عنوان</label>
+                                <input type="text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="عنوان را وارد کنید">
+                                <small id="emailHelp" class="form-text text-muted">سوال خود را در این قسمت بپرسید</small>
                                 @error('title')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label for="title">Purpose</label>
-                                <input type="text" name="purpose" class="form-control" id="purpose" aria-describedby="emailHelp" placeholder="Enter Purpose">
-                                <small id="purpose" class="form-text text-muted" > asdsdsadasdsad</small>
+                                <label for="title">هدف از نظرسنجی</label>
+                                <input type="text" name="purpose" class="form-control" id="purpose" aria-describedby="emailHelp" placeholder="">
+                                <small id="purpose" class="form-text text-muted" > توضیح مختصر از نظرسنجی</small>
                                 @error('purpose')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">create </button>
+                            <button type="submit" class="btn btn-primary">ارسال </button>
 
                         </form>
                     </div>
